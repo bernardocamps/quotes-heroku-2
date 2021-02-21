@@ -8,3 +8,7 @@ app.get('/', (req, res) => {
 app.get('/hello', (req, res) => {
     res.send('Hello, again!')
 })
+
+var port = process.env.PORT || 8080;
+
+app.listen(port);
