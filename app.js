@@ -1,12 +1,16 @@
-// Importando Express e MongoDB
+// Importando Express, CORS e MongoDB
 const express = require('express');
-const app = express();
+const cors = require('cors');
 const { MongoClient } = require("mongodb");
+const app = express();
+
+// Habilitando os CORS Requests
+// Saiba mais: https://github.com/expressjs/cors
+app.use(cors());
 
 // Importando Dotenv para não deixar a credencial do Banco de Dados exposta no código
+// Saiba mais: https://github.com/motdotla/dotenv
 require('dotenv').config();
-
-// Saiba mais em https://github.com/motdotla/dotenv
 const uri = process.env.DB_URL;
 
 // Definindo a rota
