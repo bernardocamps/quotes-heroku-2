@@ -24,8 +24,8 @@ app.get("/api/quotes", async (req, res) => {
     const database = client.db('quotes');
     const collection = database.collection('quotesCollection');
 
-    // Extraindo os dados requisitados
-    const quotes = await collection.find().toArray();
+    // Extraindo os dados requisitados - 20 quotes de forma randomizada a cada requisição ao BD
+    const quotes = await collection.aggregate([{ $sample: { size: 20 } }]).toArray();
 
     // Exportando no formato JSON
     return res.json(quotes);
